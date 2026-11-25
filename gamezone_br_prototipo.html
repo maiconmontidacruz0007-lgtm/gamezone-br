@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GameZone BR: dicas, guias e novidades de games mobile.">
+  <title>GameZone BR | Games mobile</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1020; --panel:#151d32; --text:#f4f7ff; --muted:#aab6d1; --accent:#69e0bd; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+    header { padding:24px 18px; background:linear-gradient(135deg,#152743,#123c43); border-bottom:1px solid #2c405a; }
+    .wrap { max-width:960px; margin:auto; }
+    .brand { font-size:1.35rem; font-weight:900; letter-spacing:.5px; }
+    .brand span { color:var(--accent); }
+    nav { display:flex; flex-wrap:wrap; gap:16px; margin-top:12px; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .hero { padding:42px 18px 30px; }
+    .tag { display:inline-block; border:1px solid #3b6171; color:var(--accent); padding:4px 10px; border-radius:999px; font-size:.82rem; }
+    h1 { font-size:clamp(2rem,6vw,3.5rem); line-height:1.08; margin:14px 0; }
+    .muted { color:var(--muted); }
+    .search { width:100%; max-width:520px; margin-top:20px; padding:13px 15px; border-radius:12px; border:1px solid #35435e; background:#111a2d; color:var(--text); font-size:1rem; }
+    main { padding:10px 18px 40px; }
+    .section-title { margin:26px 0 14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+    article { background:var(--panel); border:1px solid #27344d; border-radius:16px; padding:18px; }
+    article .category { color:var(--accent); font-size:.78rem; text-transform:uppercase; font-weight:700; letter-spacing:.7px; }
+    article h3 { margin:8px 0; }
+    article p { color:var(--muted); margin:0 0 12px; }
+    .read { font-weight:700; }
+    .notice { margin-top:26px; border-left:3px solid var(--accent); padding:12px 16px; background:#111a2b; border-radius:8px; color:var(--muted); }
+    footer { padding:24px 18px; border-top:1px solid #27344d; color:var(--muted); text-align:center; font-size:.9rem; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">GAMEZONE <span>BR</span></div>
+      <nav aria-label="Navegação">
+        <a href="#guias">Guias</a>
+        <a href="#mobile">Games mobile</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero wrap">
+    <span class="tag">PORTAL GAMER • VERSÃO INICIAL</span>
+    <h1>Jogue melhor.<br><span style="color:var(--accent)">Fique por dentro.</span></h1>
+    <p class="muted">Dicas práticas, guias e conteúdo feito para quem joga no celular.</p>
+    <input id="search" class="search" type="search" placeholder="Buscar um guia ou assunto..." aria-label="Buscar conteúdo">
+  </section>
+
+  <main class="wrap">
+    <h2 class="section-title" id="guias">Conteúdos em destaque</h2>
+    <div class="grid" id="cards">
+      <article data-search="arena breakout guia loot sobrevivência">
+        <div class="category">Guia de jogo</div>
+        <h3>Como começar uma partida com mais planejamento</h3>
+        <p>Organize seu objetivo, confira o equipamento e pense em uma rota de saída antes de entrar.</p>
+        <a class="read" href="#sobre">Ler mais →</a>
+      </article>
+      <article data-search="celular mobile desempenho travamento jogos">
+        <div class="category">Games mobile</div>
+        <h3>Como deixar o celular preparado para jogar</h3>
+        <p>Confira espaço livre, feche aplicativos desnecessários e ajuste os gráficos ao desempenho do aparelho.</p>
+        <a class="read" href="#sobre">Ler mais →</a>
+      </article>
+      <article data-search="curiosidades ranking jogos dicas">
+        <div class="category">Curiosidades</div>
+        <h3>5 ideias de conteúdo para seu jogo favorito</h3>
+        <p>Faça listas, testes de configurações, guias para iniciantes e comparações com opinião própria.</p>
+        <a class="read" href="#sobre">Ler mais →</a>
+      </article>
+    </div>
+
+    <div class="notice" id="mobile">
+      <strong>Próxima etapa:</strong> trocar estes exemplos por artigos seus, com informações verificadas e imagens que você tenha direito de usar.
+    </div>
+
+    <section id="sobre">
+      <h2 class="section-title">Sobre a GameZone BR</h2>
+      <p class="muted">Um projeto independente para compartilhar dicas e novidades de games. Este site é um protótipo gratuito; ainda não tem anúncios, sistema de contas ou monetização ativada.</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 GameZone BR • Conteúdo original e respeitoso.
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('#cards article')];
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      cards.forEach(card => {
+        card.classList.toggle('hidden', !card.dataset.search.includes(term) &&
+          !card.innerText.toLowerCase().includes(term));
+      });
+    });
+  </script>
+</body>
+</html>
